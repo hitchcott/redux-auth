@@ -2,7 +2,6 @@ import React, {PropTypes} from "react";
 import ButtonLoader from "./ButtonLoader";
 import Input from "./Input";
 import { emailSignInFormUpdate, emailSignIn } from "../../actions/email-sign-in";
-import { Glyphicon } from "react-bootstrap";
 import { connect } from "react-redux";
 
 class EmailSignInForm extends React.Component {
@@ -48,7 +47,7 @@ class EmailSignInForm extends React.Component {
     );
 
     return (
-      <form className='redux-auth email-sign-in-form clearfix'
+      <form className='ui form redux-auth email-sign-in-form clearfix'
             onSubmit={this.handleSubmit.bind(this)}>
         <Input type="text"
                className="email-sign-in-email"
@@ -59,7 +58,6 @@ class EmailSignInForm extends React.Component {
                errors={this.props.auth.getIn(["emailSignIn", this.getEndpoint(), "errors", "email"])}
                onChange={this.handleInput.bind(this, "email")}
                {...this.props.inputProps.email} />
-
         <Input type="password"
                label="Password"
                className="email-sign-in-password"
@@ -69,11 +67,10 @@ class EmailSignInForm extends React.Component {
                errors={this.props.auth.getIn(["emailSignIn", this.getEndpoint(), "errors", "password"])}
                onChange={this.handleInput.bind(this, "password")}
                {...this.props.inputProps.password} />
-
         <ButtonLoader loading={this.props.auth.getIn(["emailSignIn", this.getEndpoint(), "loading"])}
                       type="submit"
-                      icon={<Glyphicon glyph="log-in" />}
-                      className='email-sign-in-submit pull-right'
+                      icon="sign in"
+                      className="email-sign-in-submit"
                       disabled={disabled}
                       onClick={this.handleSubmit.bind(this)}
                       {...this.props.inputProps.submit}>

@@ -1,5 +1,4 @@
 import React, { PropTypes } from "react";
-import { Input, Glyphicon } from "react-bootstrap";
 import Immutable from "immutable";
 
 class AuthInput extends React.Component {
@@ -47,12 +46,20 @@ class AuthInput extends React.Component {
   }
 
   render () {
+    const classes = "";
+
     return (
-      <div>
-        <Input {...this.props}
-               bsStyle={(this.props.errors.size) ? "error" : null}
-               onChange={this.handleInput.bind(this)} />
-        {this.renderErrorList()}
+      <div className="field">
+        {this.props.label &&
+          <label>{this.props.label}</label>
+        }
+        <div className={`ui input fluid ${classes}`}>
+          <input
+            {...this.props}
+            onChange={this.handleInput.bind(this)}
+          />
+          {this.renderErrorList()}
+        </div>
       </div>
     );
   }
