@@ -9,7 +9,7 @@ module.exports = {
   entry:   {
     "index":             "./src/index",
     "bootstrap-theme":   "./src/views/bootstrap/index",
-    "material-ui-theme": "./src/views/material-ui/index"
+    "material-ui-theme": "./src/views/material-ui/index",
     "semantic-ui-theme": "./src/views/semantic-ui/index"
   },
   output:  {
@@ -50,7 +50,8 @@ module.exports = {
       "react-bootstrap": "commonjs react-bootstrap",
       "material-ui": "commonjs material-ui",
       "material-ui/lib/styles/colors": "commonjs material-ui/lib/styles/colors",
-      "material-ui/lib/svg-icons": "commonjs material-ui/lib/svg-icons"
+      "material-ui/lib/svg-icons": "commonjs material-ui/lib/svg-icons",
+      "jquery": "commonjs jquery",
     }
   ],
   plugins: [

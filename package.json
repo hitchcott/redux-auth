@@ -1,7 +1,7 @@
 {
   "name": "redux-auth",
   "description": "Complete token authentication system for react + redux.",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "license": "WTFPL",
   "repository": {
     "type": "git",
@@ -29,17 +29,18 @@
     "src",
     "bootstrap-theme.js",
     "material-ui-theme.js",
+    "semantic-ui-theme.js",
     "index.js",
     "LICENSE.md",
     "README.md"
   ],
   "dependencies": {
     "classnames": "^2.1.5",
-    "js-cookie": "^2.0.4",
     "cookie": "^0.2.3",
     "extend": "^3.0.0",
     "immutable": "^3.7.5",
     "isomorphic-fetch": "^2.1.1",
+    "js-cookie": "^2.0.4",
     "query-string": "^2.4.2",
     "rc-dialog": "^5.3.1",
     "redux-immutablejs": "0.0.8"
@@ -102,6 +103,9 @@
     "require-subvert": "^0.1.0",
     "rewire": "^2.5.1",
     "sass-loader": "^3.0.0",
+    "semantic-ui-dimmer": "^2.1.7",
+    "semantic-ui-modal": "^2.1.7",
+    "semantic-ui-transition": "^2.1.7",
     "serialize-javascript": "^1.1.2",
     "sinon": "1.17.0",
     "style-loader": "^0.12.4",

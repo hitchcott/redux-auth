@@ -12,8 +12,17 @@ import * as MUITheme from "../../../src/views/material-ui";
 import * as SUITheme from "../../../src/views/semantic-ui";
 import Select from "react-select";
 
+if (!global.__SERVER__ && !global.__TEST__) {
+  require('semantic-ui-css/semantic.css');
+}
 
 class Main extends React.Component {
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.updateTheme('semanticUi');
+    }, 1000)
+  }
   updateTheme (theme) {
     this.props.dispatch(updateDemoTheme(theme));
   }
@@ -37,10 +46,6 @@ class Main extends React.Component {
       case "semanticUi":
         Theme = SUITheme;
         themePath = "/semantic-ui-theme";
-        // hack - we should figure out how to unload this
-        require.ensure([], function() {
-          require("semantic-ui-css/semantic.css");
-        }, "cssFramework");
         break;
       case "bootstrap":
         Theme = BSTheme;
