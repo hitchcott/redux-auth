@@ -14,16 +14,6 @@ class ButtonLoader extends React.Component {
     this.props.onClick(ev);
   }
 
-  getColor () {
-    if (this.props.disabled) {
-      return this.props.spinColorDisabled;
-    } else if (this.props.primary || this.props.secondary) {
-      return this.props.spinColorLight;
-    } else {
-      return this.props.spinColorDark;
-    }
-  }
-
   renderIcon () {
     if (!this.props.icon && !this.props.loading) { return null; }
     return (
@@ -32,15 +22,17 @@ class ButtonLoader extends React.Component {
   }
 
   render () {
+    const className = `${this.props.className} ${this.props.color}`.trim() || "";
     return (
-      <div
-        className="ui button"
+      <button
+        type={this.props.type}
+        className={`ui button ${className}`}
         onClick={this.handleClick.bind(this)}
         disabled={this.props.disabled || this.props.loading}
       >
         {this.renderIcon()}
         {this.props.children}
-      </div>
+      </button>
     );
   }
 }

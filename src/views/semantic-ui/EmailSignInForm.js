@@ -58,6 +58,7 @@ class EmailSignInForm extends React.Component {
                errors={this.props.auth.getIn(["emailSignIn", this.getEndpoint(), "errors", "email"])}
                onChange={this.handleInput.bind(this, "email")}
                {...this.props.inputProps.email} />
+
         <Input type="password"
                label="Password"
                className="email-sign-in-password"
@@ -67,6 +68,7 @@ class EmailSignInForm extends React.Component {
                errors={this.props.auth.getIn(["emailSignIn", this.getEndpoint(), "errors", "password"])}
                onChange={this.handleInput.bind(this, "password")}
                {...this.props.inputProps.password} />
+
         <ButtonLoader loading={this.props.auth.getIn(["emailSignIn", this.getEndpoint(), "loading"])}
                       type="submit"
                       icon="sign in"

@@ -49,7 +49,7 @@ class EmailSignUpForm extends React.Component {
     );
 
     return (
-      <form className='redux-auth email-sign-up-form clearfix'
+      <form className='ui form redux-auth email-sign-up-form clearfix'
             onSubmit={this.handleSubmit.bind(this)}>
         <Input type="text"
                label="Email"
@@ -84,8 +84,9 @@ class EmailSignUpForm extends React.Component {
 
         <ButtonLoader loading={this.props.auth.getIn(["emailSignUp", this.getEndpoint(), "loading"])}
                       type="submit"
-                      className="email-sign-up-submit pull-right"
-                      icon={<Glyphicon glyph="send" />}
+                      className="email-sign-up-submit"
+                      icon="add user"
+                      color="green"
                       disabled={disabled}
                       onClick={this.handleSubmit.bind(this)}
                       {...this.props.inputProps.submit}>

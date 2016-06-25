@@ -13,7 +13,7 @@ class DestroyAccountButton extends React.Component {
 
   static defaultProps = {
     children: <span>Destroy Account</span>,
-    icon: <Glyphicon glyph="remove" />
+    icon: "remove"
   };
 
   getEndpoint () {
@@ -35,6 +35,7 @@ class DestroyAccountButton extends React.Component {
         loading={this.props.auth.getIn(["destroyAccount", this.getEndpoint(), "loading"])}
         icon={this.props.icon}
         disabled={disabled}
+        color="red"
         className="destroy-account-submit"
         onClick={this.handleClick.bind(this)}
         {...this.props} />
