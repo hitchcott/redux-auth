@@ -6,7 +6,6 @@ class FirstTimeLoginErrorModal extends React.Component {
   render () {
     return (
       <Modal
-        show={this.props.show}
         containerClass="first-time-login-error-modal"
         closeAction={hideFirstTimeLoginErrorModal}
         title="Confirmation Error">

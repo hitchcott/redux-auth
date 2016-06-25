@@ -7,7 +7,6 @@ class FirstTimeLoginSuccessModal extends React.Component {
   render () {
     return (
       <Modal
-        show={this.props.show}
         containerClass="first-time-login-success-modal"
         title={`Welcome ${this.props.auth.getIn(["user", "attributes", "email"])}!`}
         closeBtnLabel="Close"

@@ -6,7 +6,6 @@ class SignOutSuccessModal extends React.Component {
   render () {
     return (
       <Modal
-        show={this.props.show}
         containerClass="sign-out-success-modal"
         title="Goodbye!"
         closeAction={hideSignOutSuccessModal}>

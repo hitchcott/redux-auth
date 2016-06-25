@@ -6,7 +6,6 @@ class UpdatePasswordErrorModal extends React.Component {
   render () {
     return (
       <Modal
-        show={this.props.show}
         containerClass="update-password-error-modal"
         title="Error"
         closeAction={hideUpdatePasswordErrorModal}

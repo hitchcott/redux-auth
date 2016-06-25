@@ -7,7 +7,6 @@ class DestroyAccountSuccessModal extends React.Component {
   render () {
     return (
       <Modal
-        show={this.props.show}
         containerClass="destroy-account-success-modal"
         closeAction={hideDestroyAccountSuccessModal}
         title="Destroy Account Success">

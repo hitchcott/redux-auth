@@ -1,23 +1,48 @@
 import React, { PropTypes } from "react";
-import { Modal, Button } from "react-bootstrap";
 import ErrorList from "../ErrorList";
 import { connect } from "react-redux";
 
+import $ from "jquery";
+
+try {
+  $.fn.modal = require("semantic-ui-modal");
+  $.fn.dimmer = require("semantic-ui-dimmer");
+  $.fn.transition = require("semantic-ui-transition");
+} catch(e) {
+  console.log(e);
+}
+
 class BaseModal extends React.Component {
   static propTypes = {
-    show: PropTypes.bool,
     errorAddr: PropTypes.array,
-    closeBtnLabel: PropTypes.string
+    closeBtnLabel: PropTypes.string,
+    closeAction: PropTypes.func,
   };
-
   static defaultProps = {
-    show: false,
     errorAddr: null,
     closeBtnLabel: "Ok"
   };
 
-  close () {
-    this.props.dispatch(this.props.closeAction());
+  constructor(props) {
+    super(props);
+    this.close = this.close.bind(this);
+  }
+
+  componentDidMount() {
+    const onHidden = () => {
+      console.log(this.props)
+      this.props.dispatch(this.props.closeAction());
+    }
+    this.$modal = $(this.refs.modal);
+    this.$modal.modal({
+      detachable: false,
+      autofocus: false,
+      onHidden
+    }).modal("show");
+  }
+
+  close() {
+    this.$modal.modal("hide");
   }
 
   getEndpoint () {
@@ -41,24 +66,21 @@ class BaseModal extends React.Component {
       : this.props.children;
 
     return (
-      <Modal
-        show={this.props.show}
-        className={`redux-auth-modal ${this.props.containerClass}`}
-        onHide={this.close.bind(this)}>
-        <Modal.Header closeButton>
-          <Modal.Title>{this.props.title}</Modal.Title>
-        </Modal.Header>
-
-        <Modal.Body>{body}</Modal.Body>
-
-        <Modal.Footer>
-          <Button
-            onClick={this.close.bind(this)}
-            className={`${this.props.containerClass}-close`}>
+      <div
+        ref="modal"
+        className={`ui modal redux-auth-modal ${this.props.containerClass}`}
+      >
+        <div className="header">{this.props.title}</div>
+        <div className="content">{body}</div>
+        <div className="actions">
+          <div
+            className={`ui button ${this.props.containerClass}-close`}
+            onClick={this.close}
+          >
             {this.props.closeBtnLabel}
-          </Button>
-        </Modal.Footer>
-      </Modal>
+          </div>
+        </div>
+      </div>
     );
   }
 }

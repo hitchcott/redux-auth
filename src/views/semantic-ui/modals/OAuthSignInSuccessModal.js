@@ -7,7 +7,6 @@ class OAuthSignInSuccessModal extends React.Component {
   render () {
     return (
       <Modal
-        show={this.props.show}
         containerClass="oauth-sign-in-success-modal"
         closeAction={hideOAuthSignInSuccessModal}
         title="Welcome">

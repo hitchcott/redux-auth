@@ -7,7 +7,6 @@ class DestroyAccountErrorModal extends React.Component {
     return (
       <Modal
         containerClass="destroy-account-error-modal"
-        show={this.props.show}
         closeAction={hideDestroyAccountErrorModal}
         title="Error"
         errorAddr={["destroyAccount", "errors"]} />

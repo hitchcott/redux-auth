@@ -7,7 +7,6 @@ class EmailSignInSuccessModal extends React.Component {
   render () {
     return (
       <Modal
-        show={this.props.show}
         containerClass="email-sign-in-success-modal"
         closeAction={hideEmailSignInSuccessModal}
         closeBtnLabel="Close"
@@ -19,4 +18,3 @@ class EmailSignInSuccessModal extends React.Component {
 }
 
 export default connect(({auth}) => ({auth}))(EmailSignInSuccessModal);
-

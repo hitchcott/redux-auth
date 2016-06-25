@@ -6,7 +6,6 @@ class SignOutErrorModal extends React.Component {
   render () {
     return (
       <Modal
-        show={this.props.show}
         containerClass="sign-out-error-modal"
         closeAction={hideSignOutErrorModal}
         title="Sign Out Error">
