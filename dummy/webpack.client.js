@@ -30,10 +30,11 @@ module.exports = {
       { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml" },
       { include: /\.json$/, loaders: ["json"] },
       { include: /\.js$/, loaders: ["babel?cacheDirectory&presets[]=es2015&presets[]=react&presets[]=stage-0"], exclude: /node_modules/ },
-      { test: /\.scss$/, loaders: ["style", "css", "sass"] }
+      { test: /\.(scss|css|less)$/, loaders: ["style", "css", "sass"] },
+      { test: /\.(gif|png|jpg|jpeg)(\?[a-z0-9]+)?$/, loader: "file" },
     ],
     postLoaders: [
-      { test: /\.scss$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader", {publicPath: "/dist/"}) }
+      { test: /\.(scss|css|less)$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader", {publicPath: "/dist/"}) }
     ],
     noParse: [/\.min\.js/, /autoit\.js/]
   },

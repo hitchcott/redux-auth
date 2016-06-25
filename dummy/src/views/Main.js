@@ -23,7 +23,6 @@ class Main extends React.Component {
   }
 
   render () {
-    console.log("page endpoint", this.props.pageEndpoint);
     let Theme = MUITheme;
     let themePath = "/material-ui-theme";
     let endpointAttr = (this.props.pageEndpoint === "default")
@@ -38,6 +37,10 @@ class Main extends React.Component {
       case "semanticUi":
         Theme = SUITheme;
         themePath = "/semantic-ui-theme";
+        // hack - we should figure out how to unload this
+        require.ensure([], function() {
+          require("semantic-ui-css/semantic.css");
+        }, "cssFramework");
         break;
       case "bootstrap":
         Theme = BSTheme;
