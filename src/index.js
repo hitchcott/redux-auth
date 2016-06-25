@@ -30,6 +30,44 @@ export const authStateReducer = combineReducers({
   user
 });
 
+export {
+  hideEmailSignInSuccessModal,
+  hideEmailSignInErrorModal,
+  hideOAuthSignInSuccessModal,
+  hideOAuthSignInErrorModal,
+  hideSignOutSuccessModal,
+  hideSignOutErrorModal,
+  hideEmailSignUpSuccessModal,
+  hideEmailSignUpErrorModal,
+  showFirstTimeLoginSuccessModal,
+  showPasswordResetSuccessModal,
+  hideFirstTimeLoginSuccessModal,
+  hidePasswordResetSuccessModal,
+  showFirstTimeLoginErrorModal,
+  showPasswordResetErrorModal,
+  hideFirstTimeLoginErrorModal,
+  hidePasswordResetErrorModal,
+  hidePasswordResetRequestSuccessModal,
+  hidePasswordResetRequestErrorModal,
+  hideUpdatePasswordSuccessModal,
+  hideUpdatePasswordErrorModal,
+  hideDestroyAccountSuccessModal,
+  hideDestroyAccountErrorModal
+} from "./actions/ui";
+
+/* UI */
+export {
+  AuthGlobals,
+  EmailSignInForm,
+  EmailSignUpForm,
+  SignOutButton,
+  RequestPasswordResetForm,
+  OAuthSignInButton,
+  UpdatePasswordForm,
+  DestroyAccountButton,
+  TokenBridge
+} from "./views/default";
+
 /* actions */
 export {configure} from "./actions/configure";
 export {authenticate} from "./actions/authenticate";
@@ -43,6 +81,7 @@ export {updatePasswordModal, updatePasswordModalFormUpdate} from "./actions/upda
 export {destroyAccount} from "./actions/destroy-account";
 export verifyAuth from "./utils/verify-auth";
 export {getApiUrl} from "./utils/session-storage";
+
 
 /* utils */
 export {default as fetch} from "./utils/fetch";
