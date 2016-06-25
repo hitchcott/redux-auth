@@ -1,5 +1,4 @@
 import React, { PropTypes } from "react";
-import { Glyphicon } from "react-bootstrap";
 import Immutable from "immutable";
 
 class ErrorList extends React.Component {
@@ -22,24 +21,20 @@ class ErrorList extends React.Component {
       return (
         <div className="has-error">
           <p>Please correct the following {errorWord}:</p>
-          {this.props.errors.map((err, i) => {
-            return (
-              <p
-                key={i}
-                className="control-label modal-error-item"
-                style={{paddingLeft: "20px", position: "relative"}}>
-                <Glyphicon glyph="exclamation-sign"
-                           style={{position: "absolute", left: 0, top: 2}} /> {err}
-              </p>
-            );
-          })}
+          <ul>
+            {this.props.errors.map((err, i) => {
+              if (!err) { return null; }
+              return (
+                <li key={i}>{err}</li>
+              );
+            })}
+          </ul>
         </div>
       );
     } else {
       return (
         <p>
-          <Glyphicon glyph="exclamation-sign" /> There was an error processing
-          this form. Please check each field and try again.
+          There was an error processing this form. Please check each field and try again.
         </p>
       );
     }

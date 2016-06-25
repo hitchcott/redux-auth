@@ -2,7 +2,7 @@ import React, { PropTypes } from "react";
 
 class ButtonLoader extends React.Component {
   static propTypes = {
-    icon: PropTypes.func,
+    icon: PropTypes.string,
     loading: PropTypes.bool,
     children: PropTypes.node,
     onClick: PropTypes.func.isRequired,
