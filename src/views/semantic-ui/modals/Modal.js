@@ -1,16 +1,7 @@
 import React, { PropTypes } from "react";
 import ErrorList from "../ErrorList";
 import { connect } from "react-redux";
-
-import $ from "jquery";
-
-try {
-  $.fn.modal = require("semantic-ui-modal");
-  $.fn.dimmer = require("semantic-ui-dimmer");
-  $.fn.transition = require("semantic-ui-transition");
-} catch(e) {
-  console.log(e);
-}
+import ModalContainer from "./ModalContainer";
 
 class BaseModal extends React.Component {
   static propTypes = {
@@ -22,28 +13,6 @@ class BaseModal extends React.Component {
     errorAddr: null,
     closeBtnLabel: "Ok"
   };
-
-  constructor(props) {
-    super(props);
-    this.close = this.close.bind(this);
-  }
-
-  componentDidMount() {
-    const onHidden = () => {
-      console.log(this.props)
-      this.props.dispatch(this.props.closeAction());
-    }
-    this.$modal = $(this.refs.modal);
-    this.$modal.modal({
-      detachable: false,
-      autofocus: false,
-      onHidden
-    }).modal("show");
-  }
-
-  close() {
-    this.$modal.modal("hide");
-  }
 
   getEndpoint () {
     return (
@@ -66,21 +35,21 @@ class BaseModal extends React.Component {
       : this.props.children;
 
     return (
-      <div
-        ref="modal"
+      <ModalContainer
+        closeAction={this.props.closeAction}
+        dispatch={this.props.dispatch}
         className={`ui modal redux-auth-modal ${this.props.containerClass}`}
       >
         <div className="header">{this.props.title}</div>
         <div className="content">{body}</div>
         <div className="actions">
           <div
-            className={`ui button ${this.props.containerClass}-close`}
-            onClick={this.close}
+            className={`ui cancel button ${this.props.containerClass}-close`}
           >
             {this.props.closeBtnLabel}
           </div>
         </div>
-      </div>
+      </ModalContainer>
     );
   }
 }

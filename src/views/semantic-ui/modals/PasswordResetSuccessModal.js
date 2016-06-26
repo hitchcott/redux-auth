@@ -9,7 +9,10 @@ import {
   updatePasswordModalFormUpdate
 } from "../../../actions/update-password-modal";
 
+import ModalContainer from "./ModalContainer";
+
 class PasswordResetSuccessModal extends Modal {
+
   getEndpoint () {
     return (
       this.props.endpoint ||
@@ -33,58 +36,62 @@ class PasswordResetSuccessModal extends Modal {
         endpoint = this.getEndpoint();
 
     return (
-      <div
-        ref="modal"
+      <ModalContainer
+        closeAction={this.props.closeAction}
+        dispatch={this.props.dispatch}
+        form
+        onSubmit={this.handleSubmit.bind(this)}
         className="ui modal redux-auth-modal password-reset-success-modal"
       >
-        <form onSubmit={this.handleSubmit.bind(this)} className="ui form">
-          <div className="header">Reset Your Password</div>
-          <div className="content">
+        <div className="header">Reset Your Password</div>
+        <div className="content ui form">
 
-            <Input
-              type="password"
-              label="Password"
-              placeholder="Password"
-              disabled={loading}
-              className="password-reset-success-modal-password"
-              value={this.props.auth.getIn(["updatePasswordModal", endpoint, "form", "password"])}
-              errors={this.props.auth.getIn(["updatePasswordModal", endpoint, "errors", "password"])}
-              onChange={this.handleInput.bind(this, "password")}
-              {...this.props.inputProps.password} />
+          <Input
+            type="password"
+            label="Password"
+            placeholder="Password"
+            disabled={loading}
+            className="password-reset-success-modal-password"
+            value={this.props.auth.getIn(["updatePasswordModal", endpoint, "form", "password"])}
+            errors={this.props.auth.getIn(["updatePasswordModal", endpoint, "errors", "password"])}
+            onChange={this.handleInput.bind(this, "password")}
+          />
 
-            <Input
-              type="password"
-              label="Password Confirmation"
-              placeholder="Password Confirmation"
-              disabled={loading}
-              className="password-reset-success-modal-password-confirmation"
-              value={this.props.auth.getIn(["updatePasswordModal", endpoint, "form", "password_confirmation"])}
-              errors={this.props.auth.getIn(["updatePasswordModal", endpoint, "errors", "password_confirmation"])}
-              onChange={this.handleInput.bind(this, "password_confirmation")}
-            />
+          <Input
+            type="password"
+            label="Password Confirmation"
+            placeholder="Password Confirmation"
+            disabled={loading}
+            className="password-reset-success-modal-password-confirmation"
+            value={this.props.auth.getIn(["updatePasswordModal", endpoint, "form", "password_confirmation"])}
+            errors={this.props.auth.getIn(["updatePasswordModal", endpoint, "errors", "password_confirmation"])}
+            onChange={this.handleInput.bind(this, "password_confirmation")}
+          />
 
+        </div>
+        <div className="actions">
+          <div
+            className="ui cancel button password-reset-success-modal-close"
+            onClick={this.close}
+            style={{float: "left"}}
+          >
+            Cancel
           </div>
-          <div className="actions">
-            <div
-              className="ui button password-reset-success-modal-close"
-              onClick={this.close}
-              style={{float: "left"}}
-            >
-              Cancel
-            </div>
 
-            <ButtonLoader
-              {...this.props}
-              loading={loading}
-              type="submit"
-              className="password-reset-success-modal-submit"
-              icon='lock'
-              onClick={this.handleSubmit.bind(this)}
-            />
+          <ButtonLoader
+            loading={loading}
+            type="submit"
+            className="password-reset-success-modal-submit"
+            icon='lock'
+            color='green'
+            type="submit"
+            onClick={this.handleSubmit.bind(this)}
+          >
+            Submit
+          </ButtonLoader>
 
-          </div>
-        </form>
-      </div>
+        </div>
+      </ModalContainer>
     );
   }
 }

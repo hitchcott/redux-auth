@@ -4,7 +4,6 @@ import Modal from "./Modal";
 
 class EmailSignInErrorModal extends React.Component {
   render () {
-    console.log('hmmm', hideEmailSignInErrorModal)
     return (
       <Modal
         containerClass="email-sign-in-error-modal"
