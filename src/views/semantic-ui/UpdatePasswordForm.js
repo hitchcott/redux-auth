@@ -51,7 +51,7 @@ class UpdatePasswordForm extends React.Component {
       <form className="ui form redux-auth update-password-form clearfix"
             onSubmit={this.handleSubmit.bind(this)}>
         <Input type="password"
-               label="Password"
+               label="New Password"
                placeholder="Password"
                disabled={disabled}
                className="update-password-password"
@@ -61,7 +61,7 @@ class UpdatePasswordForm extends React.Component {
                {...this.props.inputProps.password} />
 
         <Input type="password"
-               label="Password Confirmation"
+               label="New Password Confirmation"
                placeholder="Password Confirmation"
                disabled={disabled}
                className="update-password-password-confirmation"
@@ -75,11 +75,12 @@ class UpdatePasswordForm extends React.Component {
                       className="pull-right"
                       icon={this.props.icon}
                       disabled={disabled}
+                      color="green"
                       className="update-password-submit"
                       icon="lock"
                       onClick={this.handleSubmit.bind(this)}
                       {...this.props.inputProps.submit}>
-          Update Password
+          Set New Password
         </ButtonLoader>
       </form>
     );

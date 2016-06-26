@@ -33,6 +33,7 @@ class SignOutButton extends React.Component {
         loading={this.props.auth.getIn(["signOut", this.getEndpoint(), "loading"])}
         icon={this.props.icon}
         disabled={disabled}
+        color="red"
         className="sign-out-submit"
         onClick={this.handleClick.bind(this)}
         {...this.props} />
