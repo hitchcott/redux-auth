@@ -10,7 +10,7 @@ class AuthInput extends React.Component {
 
   static defaultProps = {
     label: "",
-    value: null,
+    value: "",
     errors: Immutable.fromJS([])
   };
 
