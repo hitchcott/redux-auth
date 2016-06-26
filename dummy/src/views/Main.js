@@ -18,11 +18,6 @@ if (!global.__SERVER__ && !global.__TEST__) {
 
 class Main extends React.Component {
 
-  componentDidMount() {
-    setTimeout(() => {
-      this.updateTheme('semanticUi');
-    }, 1000)
-  }
   updateTheme (theme) {
     this.props.dispatch(updateDemoTheme(theme));
   }
