@@ -119,7 +119,12 @@ export function configure(endpoint={}, settings={}) {
       if (!settings.clientOnly && !settings.initialCredentials || settings.cleanSession) {
         destroySession();
       }
-
+      // show correct modals for clientOnly redirects
+      if (settings.clientOnly) {
+        firstTimeLogin = authRedirectHeaders["account_confirmation_success"];
+        mustResetPassword = authRedirectHeaders["reset_password"];
+      }
+      // if we're clientonly, check for mustRest / firstTimeLogin
       promise = Promise.resolve(applyConfig({dispatch, endpoint, settings}));
     }
 
